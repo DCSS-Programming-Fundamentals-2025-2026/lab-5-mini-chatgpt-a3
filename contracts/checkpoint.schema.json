@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MiniChatGPT Checkpoint",
+  "description": "Schema for model checkpoint persistence",
+  "type": "object",
+  "required": ["ModelKind", "TokenizerKind", "TokenizerPayload", "ModelPayload", "Seed", "ContractFingerprintChain"],
+  "properties": {
+    "ModelKind": {
+      "type": "string",
+      "enum": ["ngram", "tinynn", "tinytransformer"]
+    },
+    "TokenizerKind": {
+      "type": "string",
+      "enum": ["char"]
+    },
+    "TokenizerPayload": {
+      "type": "object",
+      "description": "Tokenizer-specific serialized state (e.g. vocab)"
+    },
+    "ModelPayload": {
+      "type": "object",
+      "description": "Model-specific serialized state (e.g. counts, weights)"
+    },
+    "Seed": {
+      "type": "integer"
+    },
+    "ContractFingerprintChain": {
+      "type": "string",
+      "description": "Stable fingerprint chain across all libs"
+    }
+  }
+}
